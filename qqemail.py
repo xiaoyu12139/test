@@ -12,6 +12,8 @@ smtp_server = "smtp.qq.com"
 smtp_port = 465
 
 def zip_report():
+    if not os.path.isdir("files"):
+        os.mkdir("files")
     zip_path = "files/allure-report.zip"
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, _, files in os.walk("allure-report"):
